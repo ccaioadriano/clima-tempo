@@ -12,7 +12,7 @@ function App() {
 
   let urlWeather =
     import.meta.env.VITE_REACT_APP_WEATHER_API_URL +
-    `?q=${inputValue}&appid=${
+    `?q=${inputValue.trim()}&appid=${
       import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
     }&lang=${import.meta.env.VITE_REACT_APP_WEATHER_API_LANG}&units=${
       import.meta.env.VITE_REACT_APP_WEATHER_API_UNITS
