@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Utils from "../utils/Utils";
 import { WeatherDetails } from "../interfaces/WeatherDetails";
 
@@ -10,10 +10,6 @@ interface DetailsProps {
 
 const Details: React.FC<DetailsProps> = ({ isOpen, onClose, details }) => {
   if (!isOpen) return null;
-
-  useEffect(() => {
-    console.log("info modal => ", details);
-  }, []);
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -36,7 +32,7 @@ const Details: React.FC<DetailsProps> = ({ isOpen, onClose, details }) => {
         </div>
 
         {/* Temperatura e detalhes */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 text-center">
           <p className="text-gray-700">
             <strong>Temperatura Atual:</strong>{" "}
             {Utils.convertDecimalPoint(details?.main.temp)}°C

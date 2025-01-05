@@ -10,23 +10,22 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  let urlWeather =
-    import.meta.env.VITE_REACT_APP_WEATHER_API_URL +
-    `?q=${inputValue.trim()}&appid=${
-      import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
-    }&lang=${import.meta.env.VITE_REACT_APP_WEATHER_API_LANG}&units=${
-      import.meta.env.VITE_REACT_APP_WEATHER_API_UNITS
-    }`;
-
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     getWeather();
   };
 
   async function getWeather() {
+    let urlWeather = `${
+      import.meta.env.VITE_REACT_APP_WEATHER_API_URL
+    }?q=${inputValue.trim()}&appid=${
+      import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
+    }&lang=${import.meta.env.VITE_REACT_APP_WEATHER_API_LANG}&units=${
+      import.meta.env.VITE_REACT_APP_WEATHER_API_UNITS
+    }`;
+
     if (inputValue === "") {
       alert("Digite o nome da cidade.");
-      setLoading(false);
       return;
     }
 
@@ -43,7 +42,6 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
 
       setDataCity(data);
     } catch (error) {
